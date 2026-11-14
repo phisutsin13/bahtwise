@@ -203,7 +203,7 @@ export function SettingsView() {
             description={t("settings.profileDescription")}
           />
           <div className="mt-4 flex items-center gap-3 rounded-2xl border border-line bg-surface-2/50 p-3.5">
-            <Avatar name={profile?.displayName || profile?.username || "My Money"} size="lg" />
+            <Avatar name={profile?.displayName || profile?.username || "Bahtwise"} size="lg" />
             <div className="min-w-0">
               <p className="truncate text-[14px] font-semibold text-ink">
                 {profile?.displayName || profile?.username}

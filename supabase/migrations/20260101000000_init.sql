@@ -1,4 +1,4 @@
--- My Money — initial schema
+-- Bahtwise — initial schema
 --
 -- Money is stored as integer satang (1 THB = 100 satang). No floating point
 -- columns are used for money anywhere in this schema.

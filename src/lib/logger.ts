@@ -62,7 +62,7 @@ export function debugLog(event: string, data?: Record<string, unknown>): void {
   if (process.env.NODE_ENV !== "development") return;
   if (typeof console === "undefined") return;
   const payload = data ? sanitizeForLog(data) : undefined;
-  console.debug(`[my-money] ${event}`, payload ?? "");
+  console.debug(`[bahtwise] ${event}`, payload ?? "");
 }
 
 export function debugError(event: string, error: unknown): void {
@@ -71,5 +71,5 @@ export function debugError(event: string, error: unknown): void {
     error instanceof Error
       ? sanitizeForLog({ errorName: error.name, code: (error as { code?: string }).code })
       : sanitizeForLog(error);
-  console.debug(`[my-money] ${event}`, safe);
+  console.debug(`[bahtwise] ${event}`, safe);
 }

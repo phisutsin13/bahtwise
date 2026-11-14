@@ -24,12 +24,12 @@ const bodyFont = IBM_Plex_Sans_Thai({
 
 export const metadata: Metadata = {
   title: {
-    default: "My Money — ทุกบาทมีเรื่องเล่า",
-    template: "%s · My Money",
+    default: "Bahtwise — ทุกบาทมีเรื่องเล่า",
+    template: "%s · Bahtwise",
   },
   description:
     "A calm, private income and expense tracker for Thailand. Bilingual, beautiful, and built around every baht.",
-  applicationName: "My Money",
+  applicationName: "Bahtwise",
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
@@ -37,12 +37,12 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: "My Money",
+    title: "Bahtwise",
     statusBarStyle: "default",
   },
   formatDetection: { telephone: false },
   openGraph: {
-    title: "My Money",
+    title: "Bahtwise",
     description: "Your money, in focus. A bilingual personal finance tracker.",
     type: "website",
   },

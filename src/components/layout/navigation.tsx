@@ -44,7 +44,7 @@ export function Sidebar() {
       <Link
         href="/home"
         className="rounded-xl px-2 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-        aria-label="My Money"
+        aria-label="Bahtwise"
       >
         <Logo size="md" />
       </Link>

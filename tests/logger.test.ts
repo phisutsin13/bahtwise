@@ -65,14 +65,14 @@ describe("debug logger", () => {
     const spy = vi.spyOn(console, "debug").mockImplementation(() => {});
     vi.stubEnv("NODE_ENV", "development");
     debugLog("test.event", { email: "a@b.co", note: "secret", count: 2 });
-    expect(spy).toHaveBeenCalledWith("[my-money] test.event", {
+    expect(spy).toHaveBeenCalledWith("[bahtwise] test.event", {
       email: "[redacted]",
       note: "[redacted]",
       count: 2,
     });
 
     debugError("test.error", new Error("boom"));
-    expect(spy).toHaveBeenCalledWith("[my-money] test.error", {
+    expect(spy).toHaveBeenCalledWith("[bahtwise] test.error", {
       errorName: "Error",
       code: undefined,
     });

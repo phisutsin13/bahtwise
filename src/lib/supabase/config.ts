@@ -14,4 +14,4 @@ export const isSupabaseConfigured =
   !url.includes("your-project") &&
   !anonKey.includes("your-anon-key");
 
-export const DEMO_SESSION_KEY = "mymoney.demo.session.v1";
+export const DEMO_SESSION_KEY = "bahtwise.demo.session.v1";

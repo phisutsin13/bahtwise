@@ -1,5 +1,5 @@
 export const en = {
-  "app.name": "My Money",
+  "app.name": "Bahtwise",
   "app.tagline": "Your money, in focus.",
   "app.description":
     "A calm, private home for your income and spending. Understand today, plan tomorrow.",
@@ -71,7 +71,7 @@ export const en = {
     "If an account exists for {email}, a sign-in link is on its way. It expires in 60 minutes.",
   "auth.usePassword": "Use username & password",
   "auth.useEmailLink": "Use an email link instead",
-  "auth.noAccount": "New to My Money?",
+  "auth.noAccount": "New to Bahtwise?",
   "auth.createAccount": "Create an account",
   "auth.haveAccount": "Already have an account?",
   "auth.signupTitle": "Create your account",
@@ -305,7 +305,7 @@ export const en = {
   "settings.title": "Settings",
   "settings.subtitle": "Your account, your preferences, your data.",
   "settings.profile": "Profile",
-  "settings.profileDescription": "How your account appears in My Money.",
+  "settings.profileDescription": "How your account appears in Bahtwise.",
   "settings.displayName": "Display name",
   "settings.username": "Username",
   "settings.usernameLocked": "Your username is used to sign in and can't be changed here.",
@@ -316,7 +316,7 @@ export const en = {
   "settings.dark": "Dark",
   "settings.system": "System",
   "settings.appearance": "Appearance",
-  "settings.appearanceDescription": "My Money follows your system theme by default.",
+  "settings.appearanceDescription": "Bahtwise follows your system theme by default.",
   "settings.data": "Data & export",
   "settings.dataDescription": "Take your data with you, or start fresh.",
   "settings.exportCsv": "Export CSV",
@@ -384,7 +384,7 @@ export const en = {
   "empty.title": "A clean slate",
   "empty.description": "Once you add a transaction, this page comes to life.",
 
-  "onboarding.title": "Welcome to My Money",
+  "onboarding.title": "Welcome to Bahtwise",
   "onboarding.step1": "Add your first transaction",
   "onboarding.step2": "Set a monthly budget",
   "onboarding.step3": "Watch your trends take shape",
@@ -445,14 +445,14 @@ export const en = {
   "a11y.skip": "Skip to main content",
 
   "export.csvHeaders": "Date,Type,Category,Note,Amount (THB),Amount (satang)",
-  "export.filename": "my-money-transactions",
-  "export.jsonFilename": "my-money-backup",
+  "export.filename": "bahtwise-transactions",
+  "export.jsonFilename": "bahtwise-backup",
 } as const;
 
 export type TranslationKey = keyof typeof en;
 
 export const th: Record<TranslationKey, string> = {
-  "app.name": "My Money",
+  "app.name": "Bahtwise",
   "app.tagline": "เห็นเงินของคุณชัดขึ้น",
   "app.description":
     "พื้นที่ส่วนตัวที่สงบ สำหรับรายรับรายจ่าย เข้าใจวันนี้ วางแผนพรุ่งนี้",
@@ -524,7 +524,7 @@ export const th: Record<TranslationKey, string> = {
     "หากมีบัญชีที่ใช้อีเมล {email} ลิงก์เข้าใช้งานกำลังถูกส่งไป อายุลิงก์ 60 นาที",
   "auth.usePassword": "ใช้ชื่อผู้ใช้และรหัสผ่าน",
   "auth.useEmailLink": "ใช้ลิงก์ทางอีเมลแทน",
-  "auth.noAccount": "ยังไม่มีบัญชี My Money?",
+  "auth.noAccount": "ยังไม่มีบัญชี Bahtwise?",
   "auth.createAccount": "สร้างบัญชี",
   "auth.haveAccount": "มีบัญชีอยู่แล้ว?",
   "auth.signupTitle": "สร้างบัญชีของคุณ",
@@ -757,7 +757,7 @@ export const th: Record<TranslationKey, string> = {
   "settings.title": "ตั้งค่า",
   "settings.subtitle": "บัญชี การตั้งค่า และข้อมูลของคุณ",
   "settings.profile": "โปรไฟล์",
-  "settings.profileDescription": "ข้อมูลที่แสดงใน My Money",
+  "settings.profileDescription": "ข้อมูลที่แสดงใน Bahtwise",
   "settings.displayName": "ชื่อที่แสดง",
   "settings.username": "ชื่อผู้ใช้",
   "settings.usernameLocked": "ชื่อผู้ใช้ใช้สำหรับเข้าสู่ระบบและแก้ไขที่นี่ไม่ได้",
@@ -768,7 +768,7 @@ export const th: Record<TranslationKey, string> = {
   "settings.dark": "มืด",
   "settings.system": "ตามระบบ",
   "settings.appearance": "รูปลักษณ์",
-  "settings.appearanceDescription": "ค่าเริ่มต้น My Money จะใช้ธีมตามระบบของคุณ",
+  "settings.appearanceDescription": "ค่าเริ่มต้น Bahtwise จะใช้ธีมตามระบบของคุณ",
   "settings.data": "ข้อมูลและการส่งออก",
   "settings.dataDescription": "พาข้อมูลไปด้วย หรือเริ่มต้นใหม่",
   "settings.exportCsv": "ส่งออก CSV",
@@ -836,7 +836,7 @@ export const th: Record<TranslationKey, string> = {
   "empty.title": "เริ่มต้นใหม่ได้เลย",
   "empty.description": "เมื่อคุณเพิ่มรายการ หน้านี้จะมีชีวิตขึ้นมา",
 
-  "onboarding.title": "ยินดีต้อนรับสู่ My Money",
+  "onboarding.title": "ยินดีต้อนรับสู่ Bahtwise",
   "onboarding.step1": "เพิ่มรายการแรกของคุณ",
   "onboarding.step2": "ตั้งงบประมาณรายเดือน",
   "onboarding.step3": "ดูแนวโน้มของคุณค่อย ๆ ชัดขึ้น",
@@ -897,8 +897,8 @@ export const th: Record<TranslationKey, string> = {
   "a11y.skip": "ข้ามไปยังเนื้อหาหลัก",
 
   "export.csvHeaders": "วันที่,ประเภท,หมวดหมู่,บันทึก,จำนวน (บาท),จำนวน (สตางค์)",
-  "export.filename": "my-money-transactions",
-  "export.jsonFilename": "my-money-backup",
+  "export.filename": "bahtwise-transactions",
+  "export.jsonFilename": "bahtwise-backup",
 };
 
 export const dictionaries = { en, th } as const;

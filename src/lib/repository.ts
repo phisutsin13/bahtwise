@@ -53,7 +53,7 @@ export class RepositoryError extends Error {
 /*                                  Demo store                                */
 /* -------------------------------------------------------------------------- */
 
-const DEMO_KEY_PREFIX = "mymoney.demo.v1.";
+const DEMO_KEY_PREFIX = "bahtwise.demo.v1.";
 
 type DemoStored = DemoSeed;
 

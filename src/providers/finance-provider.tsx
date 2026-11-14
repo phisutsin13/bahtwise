@@ -57,7 +57,7 @@ type FinanceContextValue = {
 };
 
 const FinanceContext = createContext<FinanceContextValue | null>(null);
-const PRIVACY_KEY = "mymoney.hideAmounts";
+const PRIVACY_KEY = "bahtwise.hideAmounts";
 
 export function FinanceProvider({ children }: { children: React.ReactNode }) {
   const { user, isDemo } = useAuth();

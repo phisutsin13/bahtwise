@@ -153,7 +153,7 @@ export function createDemoSeed(locale: Locale, today = todayISO()): DemoSeed {
 
   while (cursor <= today) {
     dayNumber += 1;
-    const random = mulberry32(hashString(`${cursor}:my-money-demo`));
+    const random = mulberry32(hashString(`${cursor}:bahtwise-demo`));
     const date = new Date(`${cursor}T09:00:00`);
     const dom = date.getDate();
     const weekday = date.getDay();

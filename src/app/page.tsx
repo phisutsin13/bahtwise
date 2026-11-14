@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AppGate } from "@/components/auth/app-gate";
 
 export const metadata: Metadata = {
-  title: "My Money",
+  title: "Bahtwise",
 };
 
 export default function RootPage() {

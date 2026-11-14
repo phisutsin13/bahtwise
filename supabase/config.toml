@@ -1,4 +1,4 @@
-project_id = "my-money"
+project_id = "bahtwise"
 
 [api]
 enabled = true

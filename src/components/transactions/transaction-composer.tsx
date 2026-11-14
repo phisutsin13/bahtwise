@@ -33,7 +33,7 @@ type ComposerContextValue = {
 };
 
 const ComposerContext = createContext<ComposerContextValue | null>(null);
-const LAST_CATEGORY_KEY = "mymoney.lastCategory.";
+const LAST_CATEGORY_KEY = "bahtwise.lastCategory.";
 
 export function TransactionComposerProvider({
   children,

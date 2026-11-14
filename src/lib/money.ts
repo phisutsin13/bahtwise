@@ -1,5 +1,5 @@
 /**
- * All money in My Money is stored as integer satang (1 THB = 100 satang).
+ * All money in Bahtwise is stored as integer satang (1 THB = 100 satang).
  * No floating point arithmetic is ever used for storage or aggregation.
  */
 

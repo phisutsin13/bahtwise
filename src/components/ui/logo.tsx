@@ -62,7 +62,7 @@ export function Logo({
             inverted ? "text-hero-ink" : "text-ink",
           )}
         >
-          My Money
+          Bahtwise
         </span>
       ) : null}
     </span>

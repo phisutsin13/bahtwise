@@ -39,7 +39,7 @@ type LocaleContextValue = {
 };
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
-const STORAGE_KEY = "mymoney.locale";
+const STORAGE_KEY = "bahtwise.locale";
 
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
