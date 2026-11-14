@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bahtwise
 
-## Getting Started
+> ทุกบาทมีเรื่องเล่า · Your money, in focus.
 
-First, run the development server:
+แอปติดตามรายรับ–รายจ่ายส่วนตัวแบบสองภาษา (ไทย/อังกฤษ) ดีไซน์เรียบ สงบ และเป็นส่วนตัว
+สร้างด้วย Next.js App Router + Supabase เก็บเงินเป็น **จำนวนเต็มสตางค์** ทั้งระบบ (ไม่ใช้ทศนิยม)
+
+## ฟีเจอร์
+
+- **โหมด Demo** — ใช้งานได้ทันทีโดยไม่ต้องตั้งค่าใด ๆ ข้อมูลเก็บใน `localStorage` (สร้างข้อมูลตัวอย่างย้อนหลัง 1 ปี)
+- **โหมด Supabase** — ต่อฐานข้อมูลจริง ป้องกันข้อมูลด้วย Row Level Security ทุกตาราง
+- **หน้าแรก (Home)** — รายการธุรกรรม, ตัวกรองตามประเภท/หมวด/ช่วงวันที่/คำค้น, เพิ่ม–แก้–ลบ (มี undo)
+- **สรุป (Summary)** — แท่ง/โดนัท/สปาร์กไลน์, เทียบช่วงก่อนหน้า, อัตราการออม, ประมาณการรายจ่ายสิ้นเดือน
+- **งบประมาณ (Budgets)** — งบรายหมวดต่อเดือน พร้อมแถบความคืบหน้า
+- **ตั้งค่า (Settings)** — โปรไฟล์, หมวดหมู่กำหนดเอง, ธีมสว่าง/มืด, ซ่อนยอดเงิน, ส่งออก CSV/JSON
+- **สองภาษา + ธีม** — สลับไทย/อังกฤษ และ light/dark/system ได้
+- **PWA พื้นฐาน** — manifest + ไอคอนสำหรับติดตั้งบนมือถือ
+
+## สแตก
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack) + React 19
+- [Supabase](https://supabase.com) (`@supabase/ssr`, `@supabase/supabase-js`)
+- Tailwind CSS v4, [motion](https://motion.dev), [lucide-react](https://lucide.dev)
+- Vitest + Testing Library + PGlite (ทดสอบ RLS ด้วย Postgres จำลอง)
+
+## เริ่มใช้งาน
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+เปิด http://localhost:3000 — แอปจะเริ่มใน **โหมด Demo** ให้อัตโนมัติเมื่อยังไม่ตั้งค่า Supabase
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### ต่อ Supabase (ไม่บังคับ)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. สร้างโปรเจกต์ Supabase แล้วรัน SQL ใน `supabase/migrations/*.sql` (หรือ `supabase db push`)
+2. ใน Supabase → Authentication → URL Configuration เพิ่ม Redirect URL: `http://localhost:3000/auth/callback`
+3. คัดลอก `.env.example` เป็น `.env.local` แล้วใส่ค่า:
 
-## Learn More
+   | ตัวแปร | ใช้ทำอะไร |
+   | --- | --- |
+   | `NEXT_PUBLIC_SUPABASE_URL` | URL ของโปรเจกต์ |
+   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | anon key (ฝั่งเบราว์เซอร์) |
+   | `SUPABASE_SERVICE_ROLE_KEY` | เฉพาะฝั่งเซิร์ฟเวอร์ ใช้แปลง username → email ตอนล็อกอิน (ห้ามเปิดเผย) |
 
-To learn more about Next.js, take a look at the following resources:
+   ถ้าเว้นว่างไว้ แอปจะยังทำงานในโหมด Demo ตามปกติ
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## คำสั่ง
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| คำสั่ง | ทำอะไร |
+| --- | --- |
+| `npm run dev` | เปิด dev server |
+| `npm run build` | build production |
+| `npm start` | รัน production build |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm test` | รันเทสต์ทั้งหมด (Vitest) |
+| `npm run test:watch` | เทสต์แบบ watch |
+| `npm run check` | lint + typecheck + test รวดเดียว |
 
-## Deploy on Vercel
+## โครงสร้างโปรเจกต์
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+  app/            เส้นทาง (App Router): (app)/home, summary, budgets, settings + auth
+  components/     UI แยกตามโดเมน (auth, home, summary, budgets, settings, transactions, ui)
+  providers/      React Context: auth, finance, locale, theme, toast, current-date
+  lib/            repository (demo/supabase), analytics, money, date, filters, export, types
+  i18n/           พจนานุกรม ไทย/อังกฤษ
+supabase/
+  migrations/     schema + RLS + หมวดหมู่เริ่มต้น
+tests/            ชุดเทสต์ Vitest
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ความปลอดภัยและข้อมูล
+
+- เงินเก็บเป็น **สตางค์จำนวนเต็ม** (`amountSatang`) ตลอด — ไม่มีทศนิยมในฐานข้อมูลหรือโค้ด
+- Supabase เปิด RLS ทุกตารางด้วย `user_id = auth.uid()`; หมวดหมู่ built-in เป็นแถวส่วนกลาง (`user_id is null`)
+- ตัว logger ของ dev จะ `sanitize` ลบอีเมล/UUID/ชื่อ/ยอดเงินก่อนเขียน log
+- โหมด Demo เก็บข้อมูลในเครื่องเท่านั้น ไม่มีการส่งออกไปภายนอก
+
+## การทดสอบ
+
+```bash
+npm test
+```
+
+ครอบคลุม: การคำนวณเงิน, analytics/สรุป, ตัวกรอง, logger, การแยกข้อมูล demo และ RLS (ผ่าน PGlite)
