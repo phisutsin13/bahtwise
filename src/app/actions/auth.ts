@@ -4,29 +4,7 @@ import { headers } from "next/headers";
 import { createSupabaseAdminClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { debugError, debugLog } from "@/lib/logger";
-
-export type AuthActionCode =
-  | "invalid_credentials"
-  | "email_not_confirmed"
-  | "rate_limited"
-  | "username_taken"
-  | "email_taken"
-  | "weak_password"
-  | "invalid_email"
-  | "username_format"
-  | "config"
-  | "link_sent"
-  | "signup_confirm"
-  | "signed_up"
-  | "generic";
-
-export type AuthActionState = {
-  status: "idle" | "error" | "success";
-  code?: AuthActionCode;
-  email?: string;
-};
-
-export const initialAuthState: AuthActionState = { status: "idle" };
+import type { AuthActionCode, AuthActionState } from "@/lib/auth-state";
 
 const USERNAME_RE = /^[\p{L}\p{N}._-]{3,24}$/u;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;

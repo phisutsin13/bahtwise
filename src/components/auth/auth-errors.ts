@@ -1,5 +1,5 @@
 import type { TranslationKey } from "@/i18n/dictionaries";
-import type { AuthActionCode } from "@/app/actions/auth";
+import type { AuthActionCode } from "@/lib/auth-state";
 
 export function authErrorKey(code: AuthActionCode | undefined): TranslationKey {
   switch (code) {

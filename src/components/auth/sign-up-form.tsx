@@ -20,9 +20,9 @@ import {
 } from "lucide-react";
 import {
   checkUsernameAction,
-  initialAuthState,
   signUpAction,
 } from "@/app/actions/auth";
+import { initialAuthState } from "@/lib/auth-state";
 import { useAuth } from "@/providers/auth-provider";
 import { useLocale } from "@/providers/locale-provider";
 import { authErrorKey } from "./auth-errors";
