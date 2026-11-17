@@ -195,6 +195,9 @@ export const en = {
   "home.deleteUndoHint": "Undo available for a few seconds",
   "home.categories": "Categories",
   "home.noteCount": "{count} notes",
+  "home.budgetUsed": "used",
+  "home.shortcutHint": "Press N anywhere to add a new transaction.",
+  "home.tapToFilter": "Tap to show only these transactions",
 
   "summary.title": "Summary",
   "summary.subtitle": "See the shape of your spending — and what it's telling you.",
@@ -647,6 +650,9 @@ export const th: Record<TranslationKey, string> = {
   "home.deleteUndoHint": "เลิกทำได้ภายในไม่กี่วินาที",
   "home.categories": "หมวดหมู่",
   "home.noteCount": "{count} รายการ",
+  "home.budgetUsed": "ใช้ไป",
+  "home.shortcutHint": "กด N เพื่อเพิ่มรายการใหม่ได้ทุกเมื่อ",
+  "home.tapToFilter": "แตะเพื่อดูเฉพาะรายการประเภทนี้",
 
   "summary.title": "สรุปภาพรวม",
   "summary.subtitle": "เห็นรูปร่างของการใช้จ่าย และสิ่งที่มันบอกคุณ",
