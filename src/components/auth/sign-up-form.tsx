@@ -59,10 +59,15 @@ export function SignUpForm() {
     const sequence = ++checkSequence.current;
     setAvailability("checking");
     const timer = window.setTimeout(async () => {
-      const available = await checkUsernameAction(username);
-      if (sequence !== checkSequence.current) return;
-      if (available === null) setAvailability("idle");
-      else setAvailability(available ? "free" : "taken");
+      try {
+        const available = await checkUsernameAction(username);
+        if (sequence !== checkSequence.current) return;
+        setAvailability(available === null ? "idle" : available ? "free" : "taken");
+      } catch {
+        // A failed lookup must not lock the form; the server re-checks anyway.
+        if (sequence !== checkSequence.current) return;
+        setAvailability("idle");
+      }
     }, 450);
     return () => window.clearTimeout(timer);
   }, [username, supabaseConfigured]);
@@ -270,7 +275,7 @@ SUPABASE_SERVICE_ROLE_KEY=...`}</code>
           size="lg"
           className="group mt-1 w-full"
           loading={pending}
-          disabled={availability === "taken" || availability === "checking"}
+          disabled={availability === "taken"}
         >
           {pending ? t("auth.signingUp") : t("auth.signupButton")}
           {!pending ? (

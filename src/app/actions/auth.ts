@@ -126,14 +126,16 @@ export async function signUpAction(
   if (password.length < 8) return { status: "error", code: "weak_password" };
 
   const admin = createSupabaseAdminClient();
-  if (!admin) return { status: "error", code: "config" };
-
-  const { data: existing } = await admin
-    .from("profiles")
-    .select("id")
-    .eq("username", username)
-    .maybeSingle();
-  if (existing) return { status: "error", code: "username_taken" };
+  if (admin) {
+    const { data: existing } = await admin
+      .from("profiles")
+      .select("id")
+      .eq("username", username)
+      .maybeSingle();
+    if (existing) return { status: "error", code: "username_taken" };
+  }
+  // Without a service-role key we skip the pre-check; the unique index on
+  // lower(username) still rejects duplicates inside the sign-up trigger.
 
   const supabase = await createSupabaseServerClient();
   if (!supabase) return { status: "error", code: "config" };
@@ -192,16 +194,22 @@ export async function sendMagicLinkAction(
 }
 
 export async function checkUsernameAction(usernameRaw: string): Promise<boolean | null> {
-  if (!isSupabaseConfigured) return null;
-  const username = usernameRaw.trim().toLowerCase();
-  if (!USERNAME_RE.test(username)) return null;
-  const admin = createSupabaseAdminClient();
-  if (!admin) return null;
-  const { data, error } = await admin
-    .from("profiles")
-    .select("id")
-    .eq("username", username)
-    .maybeSingle();
-  if (error) return null;
-  return !data;
+  try {
+    if (!isSupabaseConfigured) return null;
+    const username = usernameRaw.trim().toLowerCase();
+    if (!USERNAME_RE.test(username)) return null;
+    const admin = createSupabaseAdminClient();
+    if (!admin) return null;
+    const { data, error } = await admin
+      .from("profiles")
+      .select("id")
+      .eq("username", username)
+      .maybeSingle();
+    if (error) return null;
+    return !data;
+  } catch (error) {
+    // Never surface a hard failure for a soft availability hint.
+    debugError("auth.username_check_failed", error);
+    return null;
+  }
 }

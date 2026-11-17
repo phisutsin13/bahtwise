@@ -35,7 +35,12 @@ export async function createSupabaseServerClient() {
 export function createSupabaseAdminClient() {
   const serviceRole = (process.env.SUPABASE_SERVICE_ROLE_KEY ?? "").trim();
   if (!isSupabaseConfigured || serviceRole.length < 20) return null;
-  return createClient(SUPABASE_URL, serviceRole, {
-    auth: { autoRefreshToken: false, persistSession: false },
-  });
+  try {
+    return createClient(SUPABASE_URL, serviceRole, {
+      auth: { autoRefreshToken: false, persistSession: false },
+    });
+  } catch {
+    // A malformed or rotated key must not take the whole action down.
+    return null;
+  }
 }
